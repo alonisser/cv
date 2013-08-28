@@ -2,11 +2,11 @@ Alonisser - my Online Cv
 ========================
 #Developer:
 
-Python: used for both scripting and web development. Mostly with pylon/turbogears but has experience with flask and Django (loves Django).
+**Python**: used for both scripting and web development. Mostly with pylon/turbogears but has experience with flask and Django (loves Django).
 
-Js: modern front end experience including using jQuery and backbone. Now into [Angular.js](http://angularjs.org/).
+**Js**: modern front end experience including using jQuery and backbone. Now into [Angular.js](http://angularjs.org/).
 
-Linux: Know my way around linux serves and deployment including bash scripting. Advanced Git user(and huge fan). Getting into devops.
+**Linux**: Know my way around linux serves and deployment including bash scripting. Advanced Git user(and huge fan). Getting into devops.
 
 Fast learner and loves learning new technology and programming languages.
 Taught python to newbies.
