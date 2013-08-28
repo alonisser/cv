@@ -27,5 +27,5 @@ See also my post(hebrew) about [Starting to engage in the open source world.](ht
 
 #Contact:
 
-* [Email](mailto:alonisser@gmail.com): Alonisser@gmail.com
+* Email: Alonisser@gmail.com
 * Cell phone - 972-54-6734469
