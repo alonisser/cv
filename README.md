@@ -1,7 +1,8 @@
 Alonisser - my Online Cv
 ========================
-#Developer:
 
+##Developer:
+------------
 **Python**: used for both scripting and web development. Mostly with pylon/turbogears but has experience with flask and Django (loves Django).
 
 **Js**: modern front end experience including using jQuery and backbone. Now into [Angular.js](http://angularjs.org/).
@@ -17,15 +18,16 @@ On topics ranging from purely dev topics, mostly Js, Webdev & Python, To Open so
 
 Also running a series about modern dev tooling. Also [did a talk](http://alonisser.github.io/better.js.development.flow/#1) about that.
 
-#Open source:
-
+##Open source:
+--------------
 Avid open source and free software fan and contributer. I believe in giving back to the community, so I try to contribute to projects I use.
 
 Recent open source activity and contributions include: [chocolatey](https://github.com/chocolatey/chocolatey), [Django-local-flavor-il](https://github.com/django/django-localflavor-il), [lettuce](https://github.com/gabrielfalcao/lettuce), [tipa.li](https://github.com/alonisser/tiptipa). Open Knesset where I'm working on a [Vagrant oknesset machine](https://github.com/alonisser/Oknesset-vagrant), [Travic-CI webapp](https://github.com/travis-ci/travis-web)
 
 See also my post(hebrew) about [Starting to engage in the open source world.](http://4p-tech.co.il/blog/?p=1594)
 
-#Contact:
+##Contact:
+----------
 
 * Email: Alonisser@gmail.com
 * Cell phone - 972-54-6734469
