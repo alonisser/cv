@@ -1,13 +1,13 @@
 Alonisser - my Online Cv
 ========================
 
-##Developer:
+##Full stack developer:
 ------------
 **Python**: 
 
 * backend apis, scripting, automating, and web development. some pylon/turbogears, flask, bottle, ant LOTS of Django.
 * Knowledge and experience with python standard lib and other open source libraries, packaging and tooling.
-* Member and speaker in Israeli python group.
+* Member and regular speaker in the Israeli python group.
 
 **NodeJs**
 
@@ -20,8 +20,8 @@ Alonisser - my Online Cv
 * modern front end experience including large scale [Angular.js](http://angularjs.org/), some backbone experience and of course old style jQuery.
 * html5 apis
 * es2015 knowledge.
-* css and css pre processors (sass/less).
-* Modern front end tooling: Grunt/Gulp and moving to webpack + babel toolchain. See [My old talk](http://alonisser.github.io/better.js.development.flow/#1) about that.
+* css and css pre processors (sass/less/postcss).
+* Modern front end tooling: Grunt/Gulp and moving to webpack + babel toolchain. See [My very old talk](http://alonisser.github.io/better.js.development.flow/#1) about that.
 * Groks the flux. Has Some react knowledge (soon redux)
  
 
@@ -44,23 +44,25 @@ Firmly believes in automating everything, including **all** boring and mundane t
 Fast learner and loves learning new technology and programming languages, Taught python to newbies and other developers moving into python.
 
 
-
 ##Open source:
 --------------
 Avid open source and free software fan and contributor. I believe in giving back to the community, so I try to contribute to projects I use.
-Currently Core maintainer in [Open Knesset](https://github.com/hasadna/Open-Knesset/). Contributor in multiple projects Including: 
+Currently Core maintainer in [Open Knesset](https://github.com/hasadna/Open-Knesset/). Contributor (Big and small) in multiple projects Including: 
 
 * [chocolatey](https://github.com/chocolatey/chocolatey)
 * [kikar.org](https://github.com/hasadna/kikar-hamedina/)
 * [dbs.bh.org.il](https://github.com/Beit-Hatfutsot/dbs-front)
+* [Tipali open data hack](https://github.com/alonisser/tiptipa)
 * [swamp - Process runner](https://github.com/uditalias/swamp)
 * [winston - js logging tool](https://github.com/winstonjs/winston)
 * [ansible role for deploying pyenv](https://github.com/avanov/ansible-galaxy-pyenv)
 * [Django querycount middleware](https://github.com/bradmontgomery/django-querycount)
 * [Phantom css](https://github.com/Huddle/PhantomCSS)
-* [Django-local-flavor-il](https://github.com/django/django-localflavor-il), [lettuce](https://github.com/gabrielfalcao/lettuce), [tipa.li](https://github.com/alonisser/tiptipa). Open Knesset where I'm working on a [Vagrant oknesset machine](https://github.com/alonisser/Oknesset-vagrant), [Travic-CI webapp](https://github.com/travis-ci/travis-web)
+* [Django-local-flavor-il](https://github.com/django/django-localflavor-il)
+* [lettuce](https://github.com/gabrielfalcao/lettuce) 
+* [Travic-CI webapp](https://github.com/travis-ci/travis-web)
 
-See also my post(hebrew) about [Starting to engage in the open source world](http://4p-tech.co.il/blog/?p=1594) and my latest post(english) on [open sourcing challenges](https://medium.com/@alonisser/i-toggled-public-now-what-6b42959db251#.5v2i6bc2w) 
+See also my post(hebrew) about [Starting to engage in the open source world](https://4ptech.wordpress.com/2013/04/25/%D7%90%D7%96-%D7%A8%D7%A6%D7%99%D7%AA-%D7%9C%D7%AA%D7%A8%D7%95%D7%9D-%D7%9C%D7%A4%D7%A8%D7%95%D7%99%D7%99%D7%A7%D7%98-%D7%A7%D7%95%D7%93-%D7%A4%D7%AA%D7%95%D7%97-%D7%90%D7%95-%D7%9C%D7%AA%D7%95%D7%9B/) and my latest post(english) on [open sourcing challenges](https://medium.com/@alonisser/i-toggled-public-now-what-6b42959db251#.5v2i6bc2w) 
 
 ##Writing and talks:
 * Currently all technological blogging goes into my [medium blog](https://medium.com/@alonisser/)
@@ -68,8 +70,10 @@ See also my post(hebrew) about [Starting to engage in the open source world](htt
     1. [BATS a framework for testing cli tools](http://alonisser.github.io/Introduction-bats)
     2. [RabbitMQ and event driven/message driven patterns](http://alonisser.github.io/introduction-rabbitmq)
     3. [BASH Parallel](http://alonisser.github.io/Introduction-bash-parallel)
+    4. [Introuction to webpack as build tool](https://alonisser.github.io/Intro-webpack-pywebIL/)
+    5. [The strangler pattern](https://alonisser.github.io/strangler-pattern-talk/)
 
-Previously maintained a hebrew [blog]() On topics ranging from purely dev topics, mostly Js, Webdev & Python, To Open source, free software and the open web and into the dangerous terrain where Technology and Society meet/collide.
+Previously maintained a hebrew [blog](https://4ptech.wordpress.com/) (Now archived on wordpress.com) On topics ranging from purely dev topics, mostly Js, Webdev & Python, To Open source, free software and the open web and into the dangerous terrain where Technology and Society meet/collide.
 
 ##Contact:
 ----------
