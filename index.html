@@ -52,7 +52,7 @@
         <h2>
             <a id="full-stack-developer" class="anchor" href="#full-stack-developer" aria-hidden="true"><span
                     aria-hidden="true" class="octicon octicon-link"></span></a>Full stack developer || Data platform
-            engineering:</h2>
+            engineering || AI Engineering:</h2>
 
         <hr>
 
@@ -78,7 +78,7 @@
         <p><strong>NodeJs</strong></p>
 
         <ul>
-            <li>Lots of experience with node.js development (since 0.10) long ago, libraries, tooling and testing.</li>
+            <li>Experience with node.js development, libraries, tooling and testing. (Less active currently)</li>
             <li>Firm understanding of async development patterns from the classic: callbacks to  promises and modern async-await and other async
                 solutions,
                 including gotchas and async testing.
@@ -104,14 +104,13 @@
         </ul>
         <p><strong>Cloud native engineering and architecture</strong></p>
         <ul>
-            <li>AWS Cloud: Lots of experience with the services and tooling including AIM roles, s3, ec2 and ec2
-                automation,  cloudfront, RDS, elasticache, route53, vpc, efs, ecs flavors (ec2 and fargate), beanstalk(the horror), ELB and ALB,
-                etc..
+            <li>AWS Cloud: Lots of experience with the services and tooling including IAM roles, S3, EC2 and EC2
+                automation, CloudFront, RDS, ElastiCache, Route53, VPC, EFS, ECS flavors (EC2 and Fargate), ELB/ALB, Lambda,
+                Athena, Glue, and more.
             </li>
-            <li>AZURE Cloud: Lots of exprience working with both cli and portal. Working with services including: vms,
-                aks, load balancing, cosmosdb, redis cache. azure cognitive search, block storage, cognitive services,
-                Traffic manager, azure frontdoor, azure adls2 and more.
-                Implemented infrastructure as code CI/CD pipeline with azure ARM templates.
+            <li>AZURE Cloud: Experience working with both cli and portal. Services including: VMs,
+                AKS, load balancing, CosmosDB, Redis Cache, Blob Storage, ADLS Gen2, Front Door, and more.
+                Implemented infrastructure as code CI/CD pipelines with Azure ARM templates.
             </li>
             <li>Messaging: Very good RabbitMQ knowledge, including using it in an event driven architecture. See my talk
                 about <a
@@ -121,9 +120,7 @@
                     integration patterns</a> Also experience with multiple other messaging solutions.
             </li>
             <li>
-                Streaming: Implemented Kafka based CDC pipeline, including kafka connect based integration with <a
-                    href="https://debezium.io/">Debezium</a>.
-                Advanced kafka patterns
+                Streaming: Kafka based CDC pipelines, advanced Kafka patterns. (Details in Data Engineering section)
             </li>
             <li>Experience with logstash/kibana stack and other cloud logging services and an opinionated logging pro.
                 See my <a href="https://alonisser.github.io/logging-talk/#1" target="_blank">Logging talk</a></li>
@@ -137,21 +134,86 @@
 
         </ul>
 
-        <p><strong>Data engineering</strong></p>
+        <p><strong>Data Engineering</strong></p>
         <ul>
-            <li>Experience with working hands on with Data science team, Including python ML toolchain and ecosystem (pandas, numpy,
-                jupyter, keras, sklearn, etc)
+            <li>Extensive experience with <strong>Databricks</strong> platform: PySpark jobs, Unity Catalog,
+                workflows orchestration, and performance optimization. Working with <strong>Delta Lake</strong> for
+                reliable lakehouse storage and ACID transactions. See my <a target="_blank"
+                href="https://www.youtube.com/watch?v=4yVmgSB16VA">PyCon IL 2023 talk on PySpark performance</a>.
             </li>
-            <li>Experience taking ML models from notebook phase to deployed containerized production setup
-                including publishing as libs and wrapping with api servers.
+            <li>AWS <strong>Athena</strong> and Glue for serverless data querying and ETL pipelines over S3 data lakes.
+                Aurora-based data warehouse solutions.
             </li>
-            <li>
-                Wrapping and working with mlflow within spark or as an api (also a small contributer to the mlflow project)
+            <li>ELT: Experience with tools including Meltano, Rivery, Fivetran, and Stitch.
+                Built a custom ELT pipeline/framework over Databricks.
             </li>
-            <li>
-                Experience with Spark (see <a target="_blank"
+            <li>Experience with Spark ecosystem (see <a target="_blank"
                                               href="https://docs.google.com/presentation/d/e/2PACX-1vR2D4ZNyCWv1AM9Bb_96o2yvahL0IXtGL7klaxLpVo87weO4QTO-IyNwP1Td56KbSr9dCKnb31lah6D/pub?start=false&loop=false&delayms=30000">spark
-                talk</a>)
+                talk</a>), including data pipeline design, optimization, and production scheduling.
+            </li>
+            <li>Data pipelines based on <strong>dbt (not a huge fan)</strong>, <strong>Databricks pipelines</strong>, and <strong>SageMaker jobs</strong>.
+            </li>
+            <li>Building and maintaining data pipelines with CDC patterns, Kafka Connect, and <a
+                    href="https://debezium.io/">Debezium</a> for real-time data integration.
+            </li>
+            <li>Experience with working hands on with Data science teams, including python ML toolchain and ecosystem (pandas, numpy,
+                jupyter, keras, sklearn, etc).
+            </li>
+        </ul>
+
+        <p><strong>MLOps</strong></p>
+        <ul>
+            <li>Taking ML models from notebook phase to deployed containerized production setups,
+                including publishing as libs and wrapping with API servers.
+            </li>
+            <li>Wrapping and working with <strong>MLflow</strong> within Spark or as an API (also a small contributor to the
+                <a href="https://github.com/mlflow/mlflow" target="_blank">MLflow project</a>).
+            </li>
+            <li>Model serving infrastructure, experiment tracking, and model registry workflows.
+            </li>
+            <li>CI/CD pipelines for ML model training, validation, and deployment.
+            </li>
+        </ul>
+
+        <p><strong>AI Engineering</strong></p>
+        <ul>
+            <li><strong>Agent engineering</strong>: Building LLM-powered agents with tool use, multi-step reasoning, and
+                autonomous workflows. Experience building custom skills and agent capabilities.
+                See my <a target="_blank" href="https://www.youtube.com/watch?v=-CYprW6eAEE">HayaData 2025 talk on building with LLM-powered systems</a>.
+            </li>
+            <li><strong>Context engineering</strong>: context window management,
+                RAG pipelines, and retrieval strategies (agentic, vector based and/or classic) for production AI systems.
+            </li>
+            <li>Working with major LLM providers as APIs: OpenAI, Anthropic Claude,Bedrock and others —
+                including streaming, function calling, structured outputs, and cost optimization.
+            </li>
+        </ul>
+
+        <p><strong>Engineering in the Age of AI</strong></p>
+        <ul>
+            <li><strong>AI-led engineering</strong>: Embracing the new paradigm where AI is integral to how we build software —
+                not just what we build. Actively shaping the next-gen SDLC at Zencity.
+            </li>
+            <li><strong>AI peer programming</strong>: Leveraging AI tools as development partners — AI-assisted coding,
+                code review, and pair programming to accelerate development velocity and code quality.
+            </li>
+            <li>Writing custom skills, experimenting with emerging AI-powered development tools and methods,
+                and defining new workflows for AI-augmented engineering teams.
+            </li>
+        </ul>
+
+        <p><strong>Software Architecture</strong></p>
+        <ul>
+            <li>Designing and evolving distributed system architectures: microservices, event-driven systems,
+                and data platform architectures.
+            </li>
+            <li>API design, domain-driven design principles, and integration patterns.
+                See my talks on <a href="https://alonisser.github.io/strangler-pattern-talk/" target="_blank">the strangler pattern</a>
+                and <a href="https://alonisser.github.io/integration-patterns-messaging/" target="_blank">messaging integration patterns</a>.
+            </li>
+            <li>Architecture decision records, system reliability, and scalability planning.
+            </li>
+            <li>Experience leading technical decisions across teams and mentoring engineers on architectural thinking.
             </li>
         </ul>
 
@@ -193,7 +255,7 @@
                                                                          target="_blank">Datadog</a>, <a
                     href="https://newrelic.com/" target="_blank">new relic</a>, and <a href="https://sentry.io/"
                                                                                        target="_blank">Sentry</a></li>
-            <li>Advanced Docker usage and Power <a target="_blank" href="https://kubernetes.io/"Advanced >Kubernetes user</a>
+            <li>Advanced Docker usage and Power <a target="_blank" href="https://kubernetes.io/">Kubernetes</a> user
             </li>
         </ul>
 
