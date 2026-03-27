@@ -11,6 +11,189 @@
     <title>Alonisser cv site</title>
     <meta property="og:description" content="Alonisser online developer cv, hosted on gh-pages"/>
     <meta property="og:url" content="http://alonisser.github.io/cv/"/>
+    <style>
+        /* Collapsible details */
+        details {
+            margin: 0 0 20px 0;
+        }
+        details summary {
+            cursor: pointer;
+            font-weight: normal;
+            font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+            color: #b5e853;
+            letter-spacing: -0.03em;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+                         0 0 5px rgba(181, 232, 83, 0.1),
+                         0 0 10px rgba(181, 232, 83, 0.1);
+            font-size: 18px;
+            padding: 8px 0;
+            list-style: none;
+            border-bottom: 1px dashed rgba(181, 232, 83, 0.3);
+            transition: border-color 0.3s ease;
+        }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        details summary::before {
+            content: ">>";
+            font-size: 14px;
+            color: #b5e853;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        details[open] summary::before {
+            content: "v";
+        }
+        details[open] summary {
+            border-bottom: 1px dashed #b5e853;
+            margin-bottom: 15px;
+        }
+        details > div {
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Thinking text animation */
+        #thinking-text {
+            font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+            color: #666;
+            font-size: 14px;
+            min-height: 1.5em;
+            margin: 5px 0 20px 0;
+            overflow: hidden;
+        }
+        #thinking-text span {
+            display: inline-block;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        #thinking-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 14px;
+            background: #b5e853;
+            margin-left: 2px;
+            vertical-align: middle;
+            animation: blink 0.8s step-end infinite;
+        }
+
+        /* Language tags */
+        .lang-section {
+            margin: 20px 0 30px 0;
+            padding: 15px 0;
+            border-top: 1px dashed rgba(181, 232, 83, 0.2);
+            border-bottom: 1px dashed rgba(181, 232, 83, 0.2);
+        }
+        .lang-section h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #666;
+            margin: 0 0 12px 0;
+            letter-spacing: 0.1em;
+        }
+        .lang-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .lang-tags li {
+            list-style: none;
+        }
+        .lang-tags li:before {
+            content: none;
+        }
+        .lang-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border: 1px solid rgba(181, 232, 83, 0.4);
+            border-radius: 3px;
+            color: #b5e853;
+            font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: transparent;
+            position: relative;
+        }
+        .lang-tag:hover {
+            border-color: #b5e853;
+            background: rgba(181, 232, 83, 0.1);
+        }
+        .lang-tag.dimmed {
+            color: #555;
+            border-color: rgba(85, 85, 85, 0.4);
+        }
+        .lang-tag.active {
+            border-color: #b5e853;
+            background: rgba(181, 232, 83, 0.15);
+        }
+        .lang-detail {
+            display: none;
+            padding: 10px 0;
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+            animation: fadeIn 0.3s ease;
+        }
+        .lang-detail.active {
+            display: block;
+        }
+
+        /* Tab navigation */
+        .tab-nav {
+            display: flex;
+            gap: 0;
+            margin: 0 0 0 0;
+            padding: 0;
+            list-style: none;
+            border-bottom: 1px solid rgba(181, 232, 83, 0.3);
+        }
+        .tab-nav li {
+            list-style: none;
+        }
+        .tab-nav li:before {
+            content: none;
+        }
+        .tab-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+            font-size: 14px;
+            color: #666;
+            background: transparent;
+            border: 1px solid transparent;
+            border-bottom: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            margin-bottom: -1px;
+        }
+        .tab-btn:hover {
+            color: #b5e853;
+        }
+        .tab-btn.active {
+            color: #b5e853;
+            border-color: rgba(181, 232, 83, 0.3);
+            border-bottom: 1px solid #151515;
+            text-shadow: 0 0 5px rgba(181, 232, 83, 0.2);
+        }
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+            animation: fadeIn 0.3s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
     <script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -54,330 +237,379 @@
                     aria-hidden="true" class="octicon octicon-link"></span></a>Full stack developer || Data platform
             engineering || AI Engineering:</h2>
 
-        <hr>
+        <div id="thinking-text"><span></span><span id="thinking-cursor"></span></div>
 
-        <p><strong>Python</strong>: </p>
+        <p style="color: #aaa; font-size: 14px;">Principal engineer. The one they call when the incident escalates and the easy answers run out.
+            Building systems, leading tech explorations and technical decisions.</p>
 
-        <ul>
-            <li>backend apis, scripting, automating, and web development. some pylon/turbogears, flask, bottle, and LOTS
-                of Django. Also, modern async web framework including Sanic and fastapi.
-            </li>
-            <li>
-                Maintains <a href="https://github.com/alonisser/django-poetry-opinionated-cookiecutter" target="_blank">Opinionated django cookiecutter project</a>
-                For modern API serving ready Django project.
-            </li>
-            <li>Knowledge and experience with python standard lib and other open source libraries, packaging and
-                tooling. Including poetry and conda
-            </li>
-            <li>Datascience team engineering, working on productionizing datascience products from notebook phase to
-                actual deployable code.
-            </li>
-            <li>Member and regular speaker in the Israeli python groups.</li>
-        </ul>
-
-        <p><strong>NodeJs</strong></p>
-
-        <ul>
-            <li>Experience with node.js development, libraries, tooling and testing. (Less active currently)</li>
-            <li>Firm understanding of async development patterns from the classic: callbacks to  promises and modern async-await and other async
-                solutions,
-                including gotchas and async testing.
-            </li>
-            <li>Lots of experience with express.js and with some higher level node.js web frameworks.
-            </li>
-        </ul>
-        <p><strong>Scala</strong></p>
-        <ul>
-            <li>Working with Scala mainly in spark apps</li>
-        </ul>
-        <p><strong>Frontend</strong>: </p>
-
-        <ul>
-            <li>Know my way around modern frontend patterns and tooling, including experience including large scale <a href="http://angularjs.org/" target="_blank">Angular.js</a>,
-                <a href="https://facebook.github.io/react/" target="_blank">React.js</a>, <a href="https://vuejs.org/"
-                                                                                             target="_blank">Vue.js</a>
-                and of course  old style jQuery (If I must). Admittedly, Not a great css design guy, <strong>not open to
-                mainly frontend gigs</strong> Not a current main interest
-            </li>
-
-
-        </ul>
-        <p><strong>Cloud native engineering and architecture</strong></p>
-        <ul>
-            <li>AWS Cloud: Lots of experience with the services and tooling including IAM roles, S3, EC2 and EC2
-                automation, CloudFront, RDS, ElastiCache, Route53, VPC, EFS, ECS flavors (EC2 and Fargate), ELB/ALB, Lambda,
-                Athena, Glue, and more.
-            </li>
-            <li>AZURE Cloud: Experience working with both cli and portal. Services including: VMs,
-                AKS, load balancing, CosmosDB, Redis Cache, Blob Storage, ADLS Gen2, Front Door, and more.
-                Implemented infrastructure as code CI/CD pipelines with Azure ARM templates.
-            </li>
-            <li>Messaging: Very good RabbitMQ knowledge, including using it in an event driven architecture. See my talk
-                about <a
-                        href="https://alonisser.github.io/introduction-rabbitmq/#1" target="_blank">RabbitMQ and event
-                    driven vs Message driven architectures</a>. Also My new talk about <a
-                        href="https://alonisser.github.io/integration-patterns-messaging/#1" target="_blank">messaging
-                    integration patterns</a> Also experience with multiple other messaging solutions.
-            </li>
-            <li>
-                Streaming: Kafka based CDC pipelines, advanced Kafka patterns. (Details in Data Engineering section)
-            </li>
-            <li>Experience with logstash/kibana stack and other cloud logging services and an opinionated logging pro.
-                See my <a href="https://alonisser.github.io/logging-talk/#1" target="_blank">Logging talk</a></li>
-            <li>DB: experience with Postgresql(And other sql), MongoDB and redis, Also with propriety solutions like
-                Azure cosmosDb and AWS Dynamo.
-            </li>
-            <li>Experience working and implementing advanced monitoring and logging with datadog and other providers.
-            </li>
-            <li>Experience with multiple FAAS offering including AWS lambda and Azure functions.
-            </li>
-
-        </ul>
-
-        <p><strong>Data Engineering</strong></p>
-        <ul>
-            <li>Extensive experience with <strong>Databricks</strong> platform: PySpark jobs, Unity Catalog,
-                workflows orchestration, and performance optimization. Working with <strong>Delta Lake</strong> for
-                reliable lakehouse storage and ACID transactions. See my <a target="_blank"
-                href="https://www.youtube.com/watch?v=4yVmgSB16VA">PyCon IL 2023 talk on PySpark performance</a>.
-            </li>
-            <li>AWS <strong>Athena</strong> and Glue for serverless data querying and ETL pipelines over S3 data lakes.
-                Aurora-based data warehouse solutions.
-            </li>
-            <li>ELT: Experience with tools including Meltano, Rivery, Fivetran, and Stitch.
-                Built a custom ELT pipeline/framework over Databricks.
-            </li>
-            <li>Experience with Spark ecosystem (see <a target="_blank"
-                                              href="https://docs.google.com/presentation/d/e/2PACX-1vR2D4ZNyCWv1AM9Bb_96o2yvahL0IXtGL7klaxLpVo87weO4QTO-IyNwP1Td56KbSr9dCKnb31lah6D/pub?start=false&loop=false&delayms=30000">spark
-                talk</a>), including data pipeline design, optimization, and production scheduling.
-            </li>
-            <li>Data pipelines based on <strong>dbt (not a huge fan)</strong>, <strong>Databricks pipelines</strong>, and <strong>SageMaker jobs</strong>.
-            </li>
-            <li>Building and maintaining data pipelines with CDC patterns, Kafka Connect, and <a
-                    href="https://debezium.io/">Debezium</a> for real-time data integration.
-            </li>
-            <li>Experience with working hands on with Data science teams, including python ML toolchain and ecosystem (pandas, numpy,
-                jupyter, keras, sklearn, etc).
-            </li>
-        </ul>
-
-        <p><strong>MLOps</strong></p>
-        <ul>
-            <li>Taking ML models from notebook phase to deployed containerized production setups,
-                including publishing as libs and wrapping with API servers.
-            </li>
-            <li>Wrapping and working with <strong>MLflow</strong> within Spark or as an API (also a small contributor to the
-                <a href="https://github.com/mlflow/mlflow" target="_blank">MLflow project</a>).
-            </li>
-            <li>Model serving infrastructure, experiment tracking, and model registry workflows.
-            </li>
-            <li>CI/CD pipelines for ML model training, validation, and deployment.
-            </li>
-        </ul>
-
-        <p><strong>AI Engineering</strong></p>
-        <ul>
-            <li><strong>Agent engineering</strong>: Building LLM-powered agents with tool use, multi-step reasoning, and
-                autonomous workflows. Experience building custom skills and agent capabilities.
-                See my <a target="_blank" href="https://www.youtube.com/watch?v=-CYprW6eAEE">HayaData 2025 talk on building with LLM-powered systems</a>.
-            </li>
-            <li><strong>Context engineering</strong>: context window management,
-                RAG pipelines, and retrieval strategies (agentic, vector based and/or classic) for production AI systems.
-            </li>
-            <li>Working with major LLM providers as APIs: OpenAI, Anthropic Claude,Bedrock and others —
-                including streaming, function calling, structured outputs, and cost optimization.
-            </li>
-        </ul>
-
-        <p><strong>Engineering in the Age of AI</strong></p>
-        <ul>
-            <li><strong>AI-led engineering</strong>: Embracing the new paradigm where AI is integral to how we build software —
-                not just what we build. Actively shaping the next-gen SDLC at Zencity.
-            </li>
-            <li><strong>AI peer programming</strong>: Leveraging AI tools as development partners — AI-assisted coding,
-                code review, and pair programming to accelerate development velocity and code quality.
-            </li>
-            <li>Writing custom skills, experimenting with emerging AI-powered development tools and methods,
-                and defining new workflows for AI-augmented engineering teams.
-            </li>
-        </ul>
-
-        <p><strong>Software Architecture</strong></p>
-        <ul>
-            <li>Designing and evolving distributed system architectures: microservices, event-driven systems,
-                and data platform architectures.
-            </li>
-            <li>API design, domain-driven design principles, and integration patterns.
-                See my talks on <a href="https://alonisser.github.io/strangler-pattern-talk/" target="_blank">the strangler pattern</a>
-                and <a href="https://alonisser.github.io/integration-patterns-messaging/" target="_blank">messaging integration patterns</a>.
-            </li>
-            <li>Architecture decision records, system reliability, and scalability planning.
-            </li>
-            <li>Experience leading technical decisions across teams and mentoring engineers on architectural thinking.
-            </li>
-        </ul>
-
-        <p><strong>More stuff</strong>: </p>
-
-        <ul>
-            <li>Test driven development advocate</li>
-            <li>Advanced knowledge linux server know how, including advanced tracing and debugging</li>
-            <li>Unix philosophy, Unix toolchain and shell scripting, See my talk on <a
-                    href="https://alonisser.github.io/Introduction-bats" target="_blank">Using BATS for Test Driven
-                Development in
-                Bash</a>
-            </li>
-            <li>Advanced Git user (and fan).</li>
-            <li>Advanced linux tracing and debugging tools including sysdig and strace, see my <a
-                    href="https://alonisser.github.io/introduction-sysdig/#1" target="_blank">Software as a leaking
-                abstraction and sysdig talk</a></li>
-        </ul>
-
-
-        <p><strong>Devops and Automation </strong></p>
-
-        <p>Firmly believes in automating everything, including <strong>all</strong> boring and mundane tasks and all
-            deployment and configuration.</p> Reduce Toil is our battle-cry.
-
-        <ul>
-            <li>Advanced <a href="https://www.ansible.com/" target="_blank">Ansible</a> user, including <a
-                    href="https://galaxy.ansible.com/alonisser/" target="_blank">open source roles</a>
-                Can find my way around in fabric, puppet, salt and probably also chef.
-            </li>
-            <li>CI/CD guy: Implemented multiple CI/CD solutions using multiple toolchain including: Jenkins (once upon a time),Bitbucket, CircleCI, Gitlab
-                (My current favorite),Github actions, AWS codebuild and codepipeline. CI is <strong>not</strong> optional in modern software
-                development. (See my talk about "It's friday" below)
-            </li>
-            <li>
-                Terraform for infrastructure as code in AWS cloud and others.
-            </li>
-            <li>Experience with advanced monitoring tooling including <a href="https://www.datadoghq.com/"
-                                                                         target="_blank">Datadog</a>, <a
-                    href="https://newrelic.com/" target="_blank">new relic</a>, and <a href="https://sentry.io/"
-                                                                                       target="_blank">Sentry</a></li>
-            <li>Advanced Docker usage and Power <a target="_blank" href="https://kubernetes.io/">Kubernetes</a> user
-            </li>
-        </ul>
-
-        <p>Fast learner and loves learning new technology and programming languages, Taught python to newbies and other
-            developers moving into python.</p>
-
-        <h2>
-            <a id="open-source" class="anchor" href="#open-source" aria-hidden="true"><span aria-hidden="true"
-                                                                                            class="octicon octicon-link"></span></a>Open
-            source:</h2>
+        <!-- Languages section - visually distinct -->
+        <div class="lang-section">
+            <h3>$ cat languages</h3>
+            <ul class="lang-tags">
+                <li><span class="lang-tag active" data-lang="python">Python</span></li>
+                <li><span class="lang-tag" data-lang="nodejs">Node.js</span></li>
+                <li><span class="lang-tag dimmed" data-lang="scala">Scala</span></li>
+                <li><span class="lang-tag dimmed" data-lang="frontend">Frontend</span></li>
+                <li><span class="lang-tag dimmed" data-lang="bash">Bash</span></li>
+                <li><span class="lang-tag dimmed" data-lang="sql">SQL</span></li>
+            </ul>
+            <div class="lang-detail active" id="lang-python">
+                Backend APIs, scripting, automating, and web development. Some pylon/turbogears, flask, bottle, and LOTS
+                of Django. Also modern async web frameworks including Sanic and FastAPI.
+                Maintains an <a href="https://github.com/alonisser/django-poetry-opinionated-cookiecutter" target="_blank">opinionated Django cookiecutter project</a>.
+                Deep knowledge of the standard lib, open source ecosystem, packaging and tooling (poetry, conda).
+                Datascience team engineering — productionizing from notebook to deployable code.
+                Member and regular speaker in the Israeli Python groups.
+            </div>
+            <div class="lang-detail" id="lang-nodejs">
+                Lots of experience with Node.js development, libraries, tooling and testing.
+                Firm understanding of async patterns — from callbacks to promises to modern async-await, including gotchas and async testing.
+                Extensive experience with Express.js and higher-level Node.js web frameworks.
+            </div>
+            <div class="lang-detail" id="lang-scala">
+                Working with Scala mainly in Spark applications.
+            </div>
+            <div class="lang-detail" id="lang-frontend">
+                Know my way around modern frontend patterns and tooling — large scale Angular.js,
+                <a href="https://facebook.github.io/react/" target="_blank">React.js</a>,
+                <a href="https://vuejs.org/" target="_blank">Vue.js</a>,
+                and of course old style jQuery if I must. Not a great CSS design guy — <strong>not open to mainly frontend gigs</strong>. Not a current main interest.
+            </div>
+            <div class="lang-detail" id="lang-bash">
+                Unix philosophy, Unix toolchain and shell scripting. See my talk on
+                <a href="https://alonisser.github.io/Introduction-bats" target="_blank">using BATS for TDD in Bash</a>.
+            </div>
+            <div class="lang-detail" id="lang-sql">
+                PostgreSQL and other SQL dialects, Spark SQL, Athena queries, various data warehouse SQL.
+            </div>
+        </div>
 
         <hr>
 
-        <p>Avid open source and free software fan and contributor. I believe in giving back to the community, so I try
-            to contribute to projects I use.
-            Previously Core maintainer in <a href="https://github.com/hasadna/Open-Knesset/" target="_blank">Open
-                Knesset</a>.
-            Contributor (Big and small) in multiple projects, including various (old now) projects by <a href="https://www.hasadna.org.il/">Workshop for public knowledge</a>. Some of the latest including: </p>
-
-        <ul>
-            <li><a href="https://github.com/mlflow/mlflow" target="_blank">mlflow</a></li>
-            <li><a href="https://github.com/keel-hq/keel" target="_blank">keel-sh</a></li>
-            <li><a href="https://github.com/syrusakbary/pyjade" target="_blank">Pyjade</a></li>
-            <li><a href="https://github.com/hasadna/kikar-hamedina/" target="_blank">kikar.org</a></li>
-            <li><a href="https://github.com/Beit-Hatfutsot/dbs-front" target="_blank">dbs.bh.org.il</a></li>
-            <li><a href="https://github.com/alonisser/tiptipa" target="_blank">Tipali open data hack</a></li>
-            <li><a href="https://github.com/avanov/ansible-galaxy-pyenv" target="_blank">ansible role for deploying
-                pyenv</a></li>
-            <li><a href="https://github.com/moviedo/ansible-role-nvm" target="_blank">ansible role for deploying nvm</a>
-            </li>
-            <li><a href="https://github.com/bradmontgomery/django-querycount" target="_blank">Django querycount
-                middleware</a></li>
-            <li><a href="https://github.com/django/django-localflavor-il" target="_blank">Django-local-flavor-il</a>
-            </li>
-
+        <!-- Tab navigation -->
+        <ul class="tab-nav">
+            <li><button class="tab-btn active" data-tab="expertise">Expertise</button></li>
+            <li><button class="tab-btn" data-tab="writing">Writing</button></li>
+            <li><button class="tab-btn" data-tab="talks">Talks</button></li>
+            <li><button class="tab-btn" data-tab="ai-age">Engineering in the Age of AI</button></li>
+            <li><button class="tab-btn" data-tab="open-source">Open Source</button></li>
         </ul>
 
-        <p>See also my post(hebrew) about <a target="_blank"
-                                             href="https://4ptech.wordpress.com/2013/04/25/%D7%90%D7%96-%D7%A8%D7%A6%D7%99%D7%AA-%D7%9C%D7%AA%D7%A8%D7%95%D7%9D-%D7%9C%D7%A4%D7%A8%D7%95%D7%99%D7%99%D7%A7%D7%98-%D7%A7%D7%95%D7%93-%D7%A4%D7%AA%D7%95%D7%97-%D7%90%D7%95-%D7%9C%D7%AA%D7%95%D7%9B/">Starting
-            to engage in the open source world</a> and my latest post(english) on <a target="_blank"
-                                                                                     href="https://medium.com/@alonisser/i-toggled-public-now-what-6b42959db251#.5v2i6bc2w">open
-            sourcing
-            challenges</a></p>
+        <!-- TAB: Expertise -->
+        <div id="tab-expertise" class="tab-content active">
 
-        <h2>
-            <a id="writing" class="anchor" href="#writing" aria-hidden="true"><span
-                    aria-hidden="true" class="octicon octicon-link"></span></a>Writing:</h2>
+            <details>
+                <summary>Cloud Native Engineering and Architecture</summary>
+                <div>
+                    <ul>
+                        <li>AWS Cloud: Lots of experience with the services and tooling including IAM roles, S3, EC2 and EC2
+                            automation, CloudFront, RDS, ElastiCache, Route53, VPC, EFS, ECS flavors (EC2 and Fargate), ELB/ALB, Lambda,
+                            Athena, Glue, and more.
+                        </li>
+                        <li>AZURE Cloud: Experience working with both cli and portal. Services including: VMs,
+                            AKS, load balancing, CosmosDB, Redis Cache, Blob Storage, ADLS Gen2, Front Door, and more.
+                            Implemented infrastructure as code CI/CD pipelines with Azure ARM templates.
+                        </li>
+                        <li>Messaging: Very good RabbitMQ knowledge, including using it in an event driven architecture. See my talk
+                            about <a
+                                    href="https://alonisser.github.io/introduction-rabbitmq/#1" target="_blank">RabbitMQ and event
+                                driven vs Message driven architectures</a>. Also My new talk about <a
+                                    href="https://alonisser.github.io/integration-patterns-messaging/#1" target="_blank">messaging
+                                integration patterns</a> Also experience with multiple other messaging solutions.
+                        </li>
+                        <li>
+                            Streaming: Kafka based CDC pipelines, advanced Kafka patterns. (Details in Data Engineering section)
+                        </li>
+                        <li>Experience with logstash/kibana stack and other cloud logging services and an opinionated logging pro.
+                            See my <a href="https://alonisser.github.io/logging-talk/#1" target="_blank">Logging talk</a></li>
+                        <li>DB: experience with Postgresql(And other sql), MongoDB and redis, Also with propriety solutions like
+                            Azure cosmosDb and AWS Dynamo.
+                        </li>
+                        <li>Experience working and implementing advanced monitoring and logging with datadog and other providers.
+                        </li>
+                        <li>Experience with multiple FAAS offering including AWS lambda and Azure functions.
+                        </li>
+                    </ul>
+                </div>
+            </details>
 
-        <ul>
-            <li>Currently all technological blogging goes into my <a href="https://medium.com/@alonisser/"
-                                                                     target="_blank">medium
-                blog</a>
-            </li>
-            <li>Previously maintained a hebrew <a href="https://4ptech.wordpress.com/" target="_blank">tech blog</a>
-                (Now
-                archived on wordpress.com) On topics ranging from purely dev topics, mostly Js, Webdev &amp; Python, To
-                Open source,
-                free software and the open web and into the dangerous terrain where Technology and Society meet/collide.
-            </li>
-        </ul>
-        <h2>
-            <a id="talks" class="anchor" href="#talks" aria-hidden="true"><span
-                    aria-hidden="true" class="octicon octicon-link"></span></a>talks:</h2>
-        <ul>
-            <li>Tech talks:
+            <details>
+                <summary>Data Engineering</summary>
+                <div>
+                    <ul>
+                        <li>Extensive experience with <strong>Databricks</strong> platform: PySpark jobs, Unity Catalog,
+                            workflows orchestration, and performance optimization. Working with <strong>Delta Lake</strong> for
+                            reliable lakehouse storage and ACID transactions. See my <a target="_blank"
+                            href="https://www.youtube.com/watch?v=4yVmgSB16VA">PyCon IL 2023 talk on PySpark performance</a>.
+                        </li>
+                        <li>AWS <strong>Athena</strong> and Glue for serverless data querying and ETL pipelines over S3 data lakes.
+                            Aurora-based data warehouse solutions.
+                        </li>
+                        <li>ELT: Experience with tools including Meltano, Rivery, Fivetran, and Stitch.
+                            Built a custom ELT pipeline/framework over Databricks.
+                        </li>
+                        <li>Experience with Spark ecosystem (see <a target="_blank"
+                                                          href="https://docs.google.com/presentation/d/e/2PACX-1vR2D4ZNyCWv1AM9Bb_96o2yvahL0IXtGL7klaxLpVo87weO4QTO-IyNwP1Td56KbSr9dCKnb31lah6D/pub?start=false&loop=false&delayms=30000">spark
+                            talk</a>), including data pipeline design, optimization, and production scheduling.
+                        </li>
+                        <li>Data pipelines based on <strong>dbt (not a huge fan)</strong>, <strong>Databricks pipelines</strong>, and <strong>SageMaker jobs</strong>.
+                        </li>
+                        <li>Building and maintaining data pipelines with CDC patterns, Kafka Connect, and <a
+                                href="https://debezium.io/">Debezium</a> for real-time data integration.
+                        </li>
+                        <li>Author of <a href="https://pypi.org/project/dbr-logs/" target="_blank">dbr-logs</a> —
+                            an open source tool for fetching and searching Databricks job logs.
+                        </li>
+                        <li>Experience with working hands on with Data science teams, including python ML toolchain and ecosystem (pandas, numpy,
+                            jupyter, keras, sklearn, etc).
+                        </li>
+                    </ul>
+                </div>
+            </details>
 
-                <ol>
-                    <li><a target="_blank" href="https://www.youtube.com/watch?v=-CYprW6eAEE">
-                        Hard-Earned Engineering Lessons from Building with LLM-Powered Systems - HayaData 2025
-                    </a></li>
-                    <li><a target="_blank" href="https://www.youtube.com/watch?v=_hmSt6GTrQ0">
-                        It's Friday! CI/CD as an unfinished journey - SREday London 2025 Q1
-                    </a></li>
-                    <li><a target="_blank" href="https://www.youtube.com/watch?v=4yVmgSB16VA">
-                        How to kill your PySpark performance with these simple tricks - PyCon IL 2023
-                    </a></li>
-                    <li><a target="_blank" href="https://youtu.be/F--DUGfIgYk">
-                        SigTERM - everything that has a beginning has an end - Reversim summit 2022
-                    </a></li>
-                    <li><a target="_blank"
-                           href="https://docs.google.com/presentation/d/e/2PACX-1vRnK_YoHruXLMEDnhtn1E3aNOb46_v2qONvyLrNAaoxrC8NT-2rRGJThAJuiS9lBr0rrHGkkc2M9Pjk/pub?start=false&loop=false&delayms=30000">K8s
-                        cpu - requests, limits and noisy neighbours</a>
-                        Talk at Israel AWS group meeting
-                    </li>
-                    <li><a target="_blank"
-                           href="https://docs.google.com/presentation/d/e/2PACX-1vR2D4ZNyCWv1AM9Bb_96o2yvahL0IXtGL7klaxLpVo87weO4QTO-IyNwP1Td56KbSr9dCKnb31lah6D/pub?start=false&loop=false&delayms=30000">spark
-                        - gentle intro and effective Spark in python </a></li>
-                    <li><a target="_blank"
-                           href="https://docs.google.com/presentation/d/e/2PACX-1vRDVQo3iCHvFLTXt3UGcrh--vSH2eYVDSeLDye-wN2pCJRsTix40j_tI1RgZ0hJbx1Qe_uhesq5FSUY/pub?start=false&loop=false&delayms=30000">SigTerm
-                        - Ignite talk</a> presented in <a
-                            href="https://conferences.oreilly.com/software-architecture/sa-eu-2019/public/schedule/detail/79486.html">Oreilly
-                        Software architecture Berlin conference</a></li>
-                    <li><a href="https://alonisser.github.io/sigterm-talk/" target="_blank">Sigterm - Writing programs
-                        that embrace eventual death</a></li>
-                    <li><a href="https://alonisser.github.io/abstractions-talk/#1" target="_blank">Abstractions and 3
-                        sad tales of the slow app</a></li>
-                    <li><a href="https://alonisser.github.io/logging-talk/#1" target="_blank">logging</a></li>
-                    <li><a href="https://alonisser.github.io/penguin2017_testing_talk/" target="_blank">August penguin
-                        2017 Testing talk</a></li>
-                    <li><a href="https://alonisser.github.io/introduction-sysdig/#1" target="_blank">sysdig</a></li>
-                    <li><a href="https://alonisser.github.io/integration-patterns-messaging/" target="_blank">Messaging
-                        integration patterns</a></li>
-                    <li><a href="https://alonisser.github.io/functional-testing-talk/" target="_blank">Functional
-                        testing-pywebIL</a></li>
-                    <li><a href="https://alonisser.github.io/strangler-pattern-talk/" target="_blank">The strangler
-                        pattern</a></li>
-                    <li><a href="https://alonisser.github.io/Intro-webpack-pywebIL/" target="_blank">Introduction to
-                        webpack as build
-                        tool</a></li>
-                    <li><a href="http://alonisser.github.io/introduction-rabbitmq" target="_blank">RabbitMQ and event
-                        driven/message
-                        driven patterns</a></li>
-                    <li><a href="http://alonisser.github.io/Introduction-bats" target="_blank">BATS a framework for
-                        testing cli
-                        tools</a></li>
+            <details>
+                <summary>AI Engineering</summary>
+                <div>
+                    <ul>
+                        <li><strong>Agent engineering</strong>: Building LLM-powered agents with tool use, multi-step reasoning, and
+                            autonomous workflows. Experience building custom skills and agent capabilities.
+                            See my <a target="_blank" href="https://www.youtube.com/watch?v=-CYprW6eAEE">HayaData 2025 talk on building with LLM-powered systems</a>.
+                        </li>
+                        <li><strong>Context engineering</strong>: context window management,
+                            RAG pipelines, and retrieval strategies (agentic, vector based and/or classic) for production AI systems.
+                        </li>
+                        <li>Working with major LLM providers as APIs: OpenAI, Anthropic Claude,Bedrock and others —
+                            including streaming, function calling, structured outputs, and cost optimization.
+                        </li>
+                    </ul>
+                </div>
+            </details>
 
-                    <li><a href="http://alonisser.github.io/Introduction-bash-parallel" target="_blank">BASH
-                        Parallel</a></li>
+            <details>
+                <summary>Software Architecture</summary>
+                <div>
+                    <ul>
+                        <li>Designing and evolving distributed system architectures: microservices, event-driven systems,
+                            and data platform architectures.
+                        </li>
+                        <li>API design, domain-driven design principles, and integration patterns.
+                            See my talks on <a href="https://alonisser.github.io/strangler-pattern-talk/" target="_blank">the strangler pattern</a>
+                            and <a href="https://alonisser.github.io/integration-patterns-messaging/" target="_blank">messaging integration patterns</a>.
+                        </li>
+                        <li>Architecture decision records, system reliability, and scalability planning.
+                        </li>
+                        <li>Experience leading technical decisions across teams and mentoring engineers on architectural thinking.
+                        </li>
+                    </ul>
+                </div>
+            </details>
 
-                </ol>
-            </li>
-        </ul>
+            <details>
+                <summary>MLOps</summary>
+                <div>
+                    <ul>
+                        <li>Taking ML models from notebook phase to deployed containerized production setups,
+                            including publishing as libs and wrapping with API servers.
+                        </li>
+                        <li>Wrapping and working with <strong>MLflow</strong> within Spark or as an API (also a small contributor to the
+                            <a href="https://github.com/mlflow/mlflow" target="_blank">MLflow project</a>).
+                        </li>
+                        <li>Model serving infrastructure, experiment tracking, and model registry workflows.
+                        </li>
+                        <li>CI/CD pipelines for ML model training, validation, and deployment.
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>Devops and Automation</summary>
+                <div>
+                    <p>Firmly believes in automating everything, including <strong>all</strong> boring and mundane tasks and all
+                        deployment and configuration.</p> Reduce Toil is our battle-cry.
+
+                    <ul>
+                        <li>The CI/CD guy: Implemented multiple CI/CD solutions using multiple toolchain including: Jenkins (once upon a time),Bitbucket, CircleCI, Gitlab
+                            (My current favorite),Github actions, AWS codebuild and codepipeline. CI is <strong>not</strong> optional in modern software
+                            development. (See my talk <a target="_blank" href="https://www.youtube.com/watch?v=_hmSt6GTrQ0">It's Friday! CI/CD as an unfinished journey</a>)
+                        </li>
+                        <li>Advanced <a href="https://www.ansible.com/" target="_blank">Ansible</a> user, including <a
+                                href="https://galaxy.ansible.com/alonisser/" target="_blank">open source roles</a>
+                            Can find my way around in fabric, puppet, salt and probably also chef. Didn't do a lot of it lately
+                        </li>
+
+                        <li>Terraform for infrastructure as code in AWS cloud and others.
+                        </li>
+                        <li>Experience with advanced monitoring tooling including <a href="https://www.datadoghq.com/"
+                                                                                     target="_blank">Datadog</a>, <a
+                                href="https://newrelic.com/" target="_blank">new relic</a>, and <a href="https://sentry.io/"
+                                                                                                   target="_blank">Sentry</a></li>
+                        <li>Advanced Docker usage and Power Kubernetes user
+                        </li>
+                        <li>See also the Cloud Native Engineering section for more on AWS, Azure, messaging, and streaming.
+                        </li>
+                    </ul>
+
+                    <p>Fast learner and loves learning new technology and programming languages, Taught python to newbies and other
+                        developers moving into python.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>More Stuff</summary>
+                <div>
+                    <ul>
+                        <li>Test driven development advocate</li>
+                        <li>Advanced knowledge linux server know how, including advanced tracing and debugging</li>
+                        <li>Unix philosophy, Unix toolchain and shell scripting, See my talk on <a
+                                href="https://alonisser.github.io/Introduction-bats" target="_blank">Using BATS for Test Driven
+                            Development in
+                            Bash</a>
+                        </li>
+                        <li>Advanced Git user (and fan).</li>
+                        <li>Advanced linux tracing and debugging tools including sysdig and strace, see my <a
+                                href="https://alonisser.github.io/introduction-sysdig/#1" target="_blank">Software as a leaking
+                            abstraction and sysdig talk</a></li>
+                    </ul>
+                </div>
+            </details>
+
+        </div>
+
+        <!-- TAB: Engineering in the Age of AI -->
+        <div id="tab-ai-age" class="tab-content">
+
+            <ul>
+                <li><strong>AI-led engineering</strong>: Embracing the new paradigm where AI is integral to how we build software —
+                    not just what we build. Actively shaping the next-gen SDLC at Zencity.
+                </li>
+                <li><strong>AI peer programming</strong>: Leveraging AI tools as development partners — AI-assisted coding,
+                    code review, and pair programming to accelerate development velocity and code quality.
+                </li>
+                <li>Writing custom skills, experimenting with emerging AI-powered development tools and methods,
+                    and defining new workflows for AI-augmented engineering teams.
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- TAB: Open Source -->
+        <div id="tab-open-source" class="tab-content">
+
+            <p>Avid open source and free software fan and contributor. I believe in giving back to the community, so I try
+                to contribute to projects I use.
+                Previously Core maintainer in <a href="https://github.com/hasadna/Open-Knesset/" target="_blank">Open
+                    Knesset</a>.
+                Contributor (Big and small) in multiple projects, including various (old now) projects by <a href="https://www.hasadna.org.il/">Workshop for public knowledge</a>. Some of the latest including: </p>
+
+            <p><strong>Projects I maintain:</strong></p>
+            <ul>
+                <li><a href="https://pypi.org/project/dbr-logs/" target="_blank">dbr-logs</a> — fetching and searching Databricks job logs</li>
+                <li><a href="https://github.com/alonisser/django-poetry-opinionated-cookiecutter" target="_blank">django-poetry-opinionated-cookiecutter</a> — opinionated Django project template</li>
+            </ul>
+
+            <p><strong>Projects I contributed to:</strong></p>
+            <ul>
+                <li><a href="https://github.com/mlflow/mlflow" target="_blank">mlflow</a></li>
+                <li><a href="https://github.com/keel-hq/keel" target="_blank">keel-sh</a></li>
+                <li><a href="https://github.com/syrusakbary/pyjade" target="_blank">Pyjade</a></li>
+                <li><a href="https://github.com/hasadna/kikar-hamedina/" target="_blank">kikar.org</a></li>
+                <li><a href="https://github.com/Beit-Hatfutsot/dbs-front" target="_blank">dbs.bh.org.il</a></li>
+                <li><a href="https://github.com/alonisser/tiptipa" target="_blank">Tipali open data hack</a></li>
+                <li><a href="https://github.com/avanov/ansible-galaxy-pyenv" target="_blank">ansible role for deploying
+                    pyenv</a></li>
+                <li><a href="https://github.com/moviedo/ansible-role-nvm" target="_blank">ansible role for deploying nvm</a>
+                </li>
+                <li><a href="https://github.com/bradmontgomery/django-querycount" target="_blank">Django querycount
+                    middleware</a></li>
+                <li><a href="https://github.com/django/django-localflavor-il" target="_blank">Django-local-flavor-il</a>
+                </li>
+            </ul>
+
+            <p>See also my post(hebrew) about <a target="_blank"
+                                                 href="https://4ptech.wordpress.com/2013/04/25/%D7%90%D7%96-%D7%A8%D7%A6%D7%99%D7%AA-%D7%9C%D7%AA%D7%A8%D7%95%D7%9D-%D7%9C%D7%A4%D7%A8%D7%95%D7%99%D7%99%D7%A7%D7%98-%D7%A7%D7%95%D7%93-%D7%A4%D7%AA%D7%95%D7%97-%D7%90%D7%95-%D7%9C%D7%AA%D7%95%D7%9B/">Starting
+                to engage in the open source world</a> and my latest post(english) on <a target="_blank"
+                                                                                         href="https://medium.com/@alonisser/i-toggled-public-now-what-6b42959db251#.5v2i6bc2w">open
+                sourcing
+                challenges</a></p>
+
+        </div>
+
+        <!-- TAB: Writing -->
+        <div id="tab-writing" class="tab-content">
+
+            <ul>
+                <li>Currently all technological blogging goes into my <a href="https://medium.com/@alonisser/"
+                                                                         target="_blank">medium
+                    blog</a>
+                </li>
+                <li>Previously maintained a hebrew <a href="https://4ptech.wordpress.com/" target="_blank">tech blog</a>
+                    (Now
+                    archived on wordpress.com) On topics ranging from purely dev topics, mostly Js, Webdev &amp; Python, To
+                    Open source,
+                    free software and the open web and into the dangerous terrain where Technology and Society meet/collide.
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- TAB: Talks -->
+        <div id="tab-talks" class="tab-content">
+
+            <ol>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=-CYprW6eAEE">
+                    Hard-Earned Engineering Lessons from Building with LLM-Powered Systems - HayaData 2025
+                </a></li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=_hmSt6GTrQ0">
+                    It's Friday! CI/CD as an unfinished journey - SREday London 2025 Q1
+                </a></li>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=4yVmgSB16VA">
+                    How to kill your PySpark performance with these simple tricks - PyCon IL 2023
+                </a></li>
+                <li><a target="_blank" href="https://youtu.be/F--DUGfIgYk">
+                    SigTERM - everything that has a beginning has an end - Reversim summit 2022
+                </a></li>
+                <li><a target="_blank"
+                       href="https://docs.google.com/presentation/d/e/2PACX-1vRnK_YoHruXLMEDnhtn1E3aNOb46_v2qONvyLrNAaoxrC8NT-2rRGJThAJuiS9lBr0rrHGkkc2M9Pjk/pub?start=false&loop=false&delayms=30000">K8s
+                    cpu - requests, limits and noisy neighbours</a>
+                    Talk at Israel AWS group meeting
+                </li>
+                <li><a target="_blank"
+                       href="https://docs.google.com/presentation/d/e/2PACX-1vR2D4ZNyCWv1AM9Bb_96o2yvahL0IXtGL7klaxLpVo87weO4QTO-IyNwP1Td56KbSr9dCKnb31lah6D/pub?start=false&loop=false&delayms=30000">spark
+                    - gentle intro and effective Spark in python </a></li>
+                <li><a target="_blank"
+                       href="https://docs.google.com/presentation/d/e/2PACX-1vRDVQo3iCHvFLTXt3UGcrh--vSH2eYVDSeLDye-wN2pCJRsTix40j_tI1RgZ0hJbx1Qe_uhesq5FSUY/pub?start=false&loop=false&delayms=30000">SigTerm
+                    - Ignite talk</a> presented in <a
+                        href="https://conferences.oreilly.com/software-architecture/sa-eu-2019/public/schedule/detail/79486.html">Oreilly
+                    Software architecture Berlin conference</a></li>
+                <li><a href="https://alonisser.github.io/sigterm-talk/" target="_blank">Sigterm - Writing programs
+                    that embrace eventual death</a></li>
+                <li><a href="https://alonisser.github.io/abstractions-talk/#1" target="_blank">Abstractions and 3
+                    sad tales of the slow app</a></li>
+                <li><a href="https://alonisser.github.io/logging-talk/#1" target="_blank">logging</a></li>
+                <li><a href="https://alonisser.github.io/penguin2017_testing_talk/" target="_blank">August penguin
+                    2017 Testing talk</a></li>
+                <li><a href="https://alonisser.github.io/introduction-sysdig/#1" target="_blank">sysdig</a></li>
+                <li><a href="https://alonisser.github.io/integration-patterns-messaging/" target="_blank">Messaging
+                    integration patterns</a></li>
+                <li><a href="https://alonisser.github.io/functional-testing-talk/" target="_blank">Functional
+                    testing-pywebIL</a></li>
+                <li><a href="https://alonisser.github.io/strangler-pattern-talk/" target="_blank">The strangler
+                    pattern</a></li>
+                <li><a href="https://alonisser.github.io/Intro-webpack-pywebIL/" target="_blank">Introduction to
+                    webpack as build
+                    tool</a></li>
+                <li><a href="http://alonisser.github.io/introduction-rabbitmq" target="_blank">RabbitMQ and event
+                    driven/message
+                    driven patterns</a></li>
+                <li><a href="http://alonisser.github.io/Introduction-bats" target="_blank">BATS a framework for
+                    testing cli
+                    tools</a></li>
+                <li><a href="http://alonisser.github.io/Introduction-bash-parallel" target="_blank">BASH
+                    Parallel</a></li>
+            </ol>
+
+        </div>
 
 
         <h2>
@@ -396,6 +628,110 @@
     </section>
 </div>
 
+<script>
+(function() {
+    // Language tag switching
+    var langTags = document.querySelectorAll('.lang-tag');
+    var langDetails = document.querySelectorAll('.lang-detail');
+
+    langTags.forEach(function(tag) {
+        tag.addEventListener('click', function() {
+            var target = tag.getAttribute('data-lang');
+
+            langTags.forEach(function(t) { t.classList.remove('active'); });
+            langDetails.forEach(function(d) { d.classList.remove('active'); });
+
+            tag.classList.add('active');
+            document.getElementById('lang-' + target).classList.add('active');
+        });
+    });
+
+    // Tab switching
+    var buttons = document.querySelectorAll('.tab-btn');
+    var contents = document.querySelectorAll('.tab-content');
+
+    buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var target = btn.getAttribute('data-tab');
+
+            buttons.forEach(function(b) { b.classList.remove('active'); });
+            contents.forEach(function(c) { c.classList.remove('active'); });
+
+            btn.classList.add('active');
+            document.getElementById('tab-' + target).classList.add('active');
+        });
+    });
+
+    // Thinking text animation
+    var phrases = [
+        "building data pipelines...",
+        "engineering AI agents...",
+        "shaping the next-gen SDLC...",
+        "automating everything...",
+        "designing distributed systems...",
+        "optimizing PySpark jobs...",
+        "writing custom skills...",
+        "deploying to kubernetes...",
+        "crafting context windows...",
+        "streaming with kafka...",
+        "terraforming infrastructure...",
+        "pair programming with AI...",
+        "productionizing ML models...",
+        "reducing toil...",
+        "speaking at conferences...",
+        "contributing to open source...",
+        "debugging with sysdig...",
+        "orchestrating databricks workflows..."
+    ];
+
+    var el = document.querySelector('#thinking-text span');
+    var currentPhrase = 0;
+    var currentChar = 0;
+    var isDeleting = false;
+    var pauseEnd = 0;
+
+    function tick() {
+        var phrase = phrases[currentPhrase];
+        var now = Date.now();
+
+        if (now < pauseEnd) {
+            requestAnimationFrame(tick);
+            return;
+        }
+
+        if (!isDeleting) {
+            currentChar++;
+            el.textContent = phrase.substring(0, currentChar);
+
+            if (currentChar === phrase.length) {
+                isDeleting = true;
+                pauseEnd = now + 1800;
+            }
+        } else {
+            currentChar--;
+            el.textContent = phrase.substring(0, currentChar);
+
+            if (currentChar === 0) {
+                isDeleting = false;
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+            }
+        }
+
+        var speed = isDeleting ? 30 : 60;
+        setTimeout(tick, speed);
+    }
+
+    // Shuffle phrases on load
+    for (var i = phrases.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = phrases[i];
+        phrases[i] = phrases[j];
+        phrases[j] = temp;
+    }
+
+    tick();
+})();
+</script>
 
 </body>
 </html>
