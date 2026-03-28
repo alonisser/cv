@@ -62,9 +62,22 @@ details {
     page-break-inside: avoid;
 }
 
-details > div {
+details,
+details[open] {
+    display: block !important;
+}
+
+details > summary {
+    display: block !important;
+}
+
+details > div,
+details > *:not(summary) {
     display: block !important;
     animation: none !important;
+    visibility: visible !important;
+    height: auto !important;
+    overflow: visible !important;
 }
 
 details summary {
@@ -179,7 +192,36 @@ li {
 }
 
 .lang-tags {
-    display: none !important;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0;
+    margin: 0 0 10px 0;
+    list-style: none;
+}
+
+.lang-tags li {
+    list-style: none;
+}
+
+.lang-tags li:before {
+    content: none !important;
+}
+
+.lang-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border: 1px solid #999;
+    border-radius: 3px;
+    font-size: 9pt;
+    color: #333 !important;
+    background: transparent !important;
+    cursor: default;
+}
+
+.lang-tag.dimmed {
+    color: #333 !important;
+    border-color: #999;
 }
 
 .lang-detail {
@@ -190,6 +232,14 @@ li {
     border-bottom: 1px dotted #ddd;
     margin: 0 0 6px 0;
 }
+
+/* Add language name labels before each detail */
+#lang-python::before { content: "Python: "; font-weight: bold; }
+#lang-nodejs::before { content: "Node.js: "; font-weight: bold; }
+#lang-scala::before { content: "Scala: "; font-weight: bold; }
+#lang-frontend::before { content: "Frontend: "; font-weight: bold; }
+#lang-bash::before { content: "Bash: "; font-weight: bold; }
+#lang-sql::before { content: "SQL: "; font-weight: bold; }
 
 .lang-detail:last-child {
     border-bottom: none;

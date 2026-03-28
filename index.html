@@ -773,6 +773,30 @@
     }
 
     tick();
+
+    // Print: open all details and show all lang/tab content
+    function prepareForPrint() {
+        document.querySelectorAll('details').forEach(function(d) { d.setAttribute('open', ''); });
+        document.querySelectorAll('.lang-detail').forEach(function(d) { d.classList.add('active'); });
+        document.querySelectorAll('.tab-content').forEach(function(d) { d.classList.add('active'); });
+    }
+    function restoreAfterPrint() {
+        document.querySelectorAll('details:not([data-was-open])').forEach(function(d) { d.removeAttribute('open'); });
+        document.querySelectorAll('.lang-detail').forEach(function(d) {
+            if (!d.getAttribute('data-was-active')) d.classList.remove('active');
+        });
+    }
+    // Mark currently open elements before print
+    window.addEventListener('beforeprint', function() {
+        document.querySelectorAll('details[open]').forEach(function(d) { d.setAttribute('data-was-open', ''); });
+        document.querySelectorAll('.lang-detail.active').forEach(function(d) { d.setAttribute('data-was-active', ''); });
+        prepareForPrint();
+    });
+    window.addEventListener('afterprint', function() {
+        restoreAfterPrint();
+        document.querySelectorAll('[data-was-open]').forEach(function(d) { d.removeAttribute('data-was-open'); });
+        document.querySelectorAll('[data-was-active]').forEach(function(d) { d.removeAttribute('data-was-active'); });
+    });
 })();
 </script>
 
