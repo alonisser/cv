@@ -1,0 +1,232 @@
+/* Print styles for CV */
+@page {
+    margin: 1.5cm;
+}
+
+* {
+    background: white !important;
+    color: #222 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+body {
+    font-size: 12pt;
+    line-height: 1.4;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    border-bottom: 2px solid #333;
+    padding: 0 0 10px 0;
+    margin: 0 0 20px 0;
+}
+
+header h1 {
+    font-size: 22pt;
+    margin: 0;
+    color: #000 !important;
+}
+
+header h1:before {
+    content: none;
+}
+
+header h2 {
+    font-size: 11pt;
+    color: #555 !important;
+    margin: 5px 0 0 0;
+}
+
+/* Hide decorative elements */
+#thinking-text,
+#thinking-cursor,
+#downloads,
+.tab-nav,
+details summary::before,
+details[open] summary::before {
+    display: none !important;
+}
+
+/* Force all details/collapsible sections open */
+details {
+    margin: 0 0 12px 0;
+    page-break-inside: avoid;
+}
+
+details > div {
+    display: block !important;
+    animation: none !important;
+}
+
+details summary {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #000 !important;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+    margin: 0 0 8px 0;
+    cursor: default;
+    list-style: none;
+}
+
+/* Force all tab contents visible */
+.tab-content {
+    display: block !important;
+    animation: none !important;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    margin: 0 0 15px 0;
+    page-break-inside: avoid;
+}
+
+/* Add tab section labels since tab nav is hidden */
+#tab-expertise::before {
+    content: "Expertise";
+    display: block;
+    font-size: 14pt;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    color: #000 !important;
+}
+
+#tab-ai-age::before {
+    content: "Engineering in the Age of AI";
+    display: block;
+    font-size: 14pt;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    color: #000 !important;
+}
+
+#tab-open-source::before {
+    content: "Open Source";
+    display: block;
+    font-size: 14pt;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    color: #000 !important;
+}
+
+#tab-writing::before {
+    content: "Writing";
+    display: block;
+    font-size: 14pt;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    color: #000 !important;
+}
+
+#tab-talks::before {
+    content: "Talks";
+    display: block;
+    font-size: 14pt;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    color: #000 !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #000 !important;
+    page-break-after: avoid;
+}
+
+#main_content h1 {
+    font-size: 18pt;
+}
+
+#main_content h2 {
+    font-size: 14pt;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;
+}
+
+/* Lists */
+ul li {
+    list-style: disc;
+}
+
+ul li:before {
+    content: none !important;
+    margin: 0;
+}
+
+ol li {
+    list-style: decimal;
+}
+
+li {
+    font-size: 10pt;
+    line-height: 1.5;
+    margin: 0 0 4px 0;
+}
+
+/* Language section */
+.lang-section {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.lang-tags {
+    display: none !important;
+}
+
+.lang-detail {
+    display: block !important;
+    padding: 4px 0;
+    color: #333 !important;
+    font-size: 10pt;
+    border-bottom: 1px dotted #ddd;
+    margin: 0 0 6px 0;
+}
+
+.lang-detail:last-child {
+    border-bottom: none;
+}
+
+/* Links - show URLs */
+a {
+    color: #222 !important;
+    text-decoration: underline;
+}
+
+a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #666 !important;
+    word-break: break-all;
+}
+
+/* Don't show URL for anchor links */
+a[href^="#"]::after,
+a[href^="mailto:"]::after {
+    content: none;
+}
+
+/* Horizontal rules */
+hr {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    height: 0;
+}
+
+/* Contact section */
+#contact {
+    page-break-before: avoid;
+}
+
+/* Page breaks */
+.tab-content {
+    page-break-before: auto;
+}
