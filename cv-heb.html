@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>קורות חיים - אלון ניסר</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            color: #333;
+            background: #f5f5f5;
+            line-height: 1.45;
+            font-size: 13px;
+        }
+
+        .page {
+            max-width: 960px;
+            margin: 20px auto;
+            background: #fff;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: #f8f9fa;
+            padding: 25px 20px;
+            border-left: 3px solid #0097a7;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            color: #0097a7;
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+
+        .sidebar .title {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 18px;
+            line-height: 1.4;
+        }
+
+        .sidebar-section {
+            margin-bottom: 16px;
+        }
+
+        .sidebar-section h2 {
+            font-size: 14px;
+            color: #0097a7;
+            border-bottom: 2px solid #0097a7;
+            padding-bottom: 4px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .sidebar-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-section ul li {
+            padding: 1px 0;
+            font-size: 12px;
+            position: relative;
+            padding-right: 14px;
+        }
+
+        .sidebar-section ul li::before {
+            content: "\25CF";
+            color: #0097a7;
+            font-size: 8px;
+            position: absolute;
+            right: 0;
+            top: 7px;
+        }
+
+        .contact-item {
+            font-size: 12px;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #0097a7;
+        }
+
+        .lang-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .lang-list li {
+            padding: 2px 8px !important;
+            padding-right: 8px !important;
+            border: 1px solid #0097a7;
+            border-radius: 3px;
+            font-size: 11px;
+            color: #0097a7;
+        }
+
+        .lang-list li::before {
+            content: none !important;
+        }
+
+        /* Main content */
+        .main {
+            padding: 25px 28px;
+        }
+
+        .main h2 {
+            font-size: 17px;
+            color: #0097a7;
+            border-bottom: 2px solid #0097a7;
+            padding-bottom: 4px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .section {
+            margin-bottom: 16px;
+        }
+
+        /* Job entry */
+        .job {
+            margin-bottom: 14px;
+            display: grid;
+            grid-template-columns: 1fr 130px;
+            gap: 4px 10px;
+        }
+
+        .job-info h3 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 1px;
+        }
+
+        .job-info .company {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 3px;
+        }
+
+        .job-meta {
+            text-align: left;
+            font-size: 12px;
+            color: #777;
+            white-space: nowrap;
+        }
+
+        .job-meta .dates {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .job-desc {
+            grid-column: 1 / -1;
+            font-size: 12px;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        .job-desc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .job-desc ul li {
+            padding: 2px 0;
+            position: relative;
+            padding-right: 14px;
+        }
+
+        .job-desc ul li::before {
+            content: "\25CF";
+            color: #0097a7;
+            font-size: 7px;
+            position: absolute;
+            right: 0;
+            top: 7px;
+        }
+
+        /* Talks section */
+        .talks-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .talks-list li {
+            padding: 2px 0;
+            font-size: 12px;
+            position: relative;
+            padding-right: 14px;
+        }
+
+        .talks-list li::before {
+            content: "\25CF";
+            color: #0097a7;
+            font-size: 7px;
+            position: absolute;
+            right: 0;
+            top: 8px;
+        }
+
+        .talks-list a {
+            color: #0097a7;
+            text-decoration: none;
+        }
+
+        .talks-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Print styles */
+        @media print {
+            body { background: white; font-size: 11px; line-height: 1.35; }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                max-width: 100%;
+                grid-template-columns: 240px 1fr;
+            }
+            .sidebar { padding: 15px 15px; }
+            .sidebar h1 { font-size: 20px; }
+            .sidebar .title { margin-bottom: 12px; font-size: 11px; }
+            .sidebar-section { margin-bottom: 10px; }
+            .sidebar-section h2 { font-size: 12px; margin-bottom: 5px; }
+            .sidebar-section ul li { font-size: 10px; padding: 1px 0; }
+            .contact-item { font-size: 10px; margin-bottom: 2px; }
+            .main { padding: 15px 20px; }
+            .main h2 { font-size: 14px; margin-bottom: 8px; }
+            .section { margin-bottom: 10px; }
+            .job { margin-bottom: 8px; }
+            .job-info h3 { font-size: 11px; }
+            .job-info .company { font-size: 10px; }
+            .job-desc { font-size: 10px; line-height: 1.4; }
+            .job-desc ul li { padding: 1px 0; }
+            .talks-list li { font-size: 10px; padding: 1px 0; }
+            @page { margin: 0.8cm; }
+        }
+
+        /* Mobile */
+        @media screen and (max-width: 700px) {
+            .page {
+                grid-template-columns: 1fr;
+                margin: 0;
+            }
+            .sidebar {
+                border-left: none;
+                border-bottom: 3px solid #0097a7;
+                padding: 25px 20px;
+            }
+            .main {
+                padding: 25px 20px;
+            }
+            .job {
+                grid-template-columns: 1fr;
+            }
+            .job-meta {
+                text-align: right;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h1>אלון ניסר</h1>
+        <div class="title">Principal Engineer<br>הנדסת נתונים | הנדסת AI | ארכיטקטורת תוכנה</div>
+
+        <div class="sidebar-section">
+            <h2>פרטי קשר</h2>
+            <div class="contact-item">&#9993; <a href="mailto:Alonisser@gmail.com">Alonisser@gmail.com</a></div>
+            <div class="contact-item">&#9742; 054-6734469</div>
+            <div class="contact-item">&#128279; <a href="https://il.linkedin.com/in/alonisser" target="_blank">linkedin.com/in/alonisser</a></div>
+            <div class="contact-item">&#128187; <a href="https://alonisser.github.io/cv/" target="_blank">alonisser.github.io/cv</a></div>
+        </div>
+
+        <div class="sidebar-section">
+            <h2>תחומי התמחות</h2>
+            <ul>
+                <li>הנדסת נתונים ופלטפורמות Data</li>
+                <li>הנדסת AI וסוכנים מבוססי LLM</li>
+                <li>ארכיטקטורת מערכות מבוזרות</li>
+                <li>Cloud Native (AWS, Azure)</li>
+                <li>MLOps ותשתיות ML</li>
+                <li>DevOps, CI/CD ואוטומציה</li>
+                <li>הובלה טכנית והנחיית צוותים</li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <h2>שפות תכנות</h2>
+            <ul class="lang-list">
+                <li>Python</li>
+                <li>Node.js</li>
+                <li>Scala</li>
+                <li>SQL</li>
+                <li>Bash</li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <h2>טכנולוגיות מרכזיות</h2>
+            <ul>
+                <li>Databricks, PySpark, Delta Lake</li>
+                <li>Kafka, Debezium, CDC</li>
+                <li>Kubernetes, Docker, Terraform</li>
+                <li>Django, FastAPI, Express.js</li>
+                <li>OpenAI, Anthropic Claude, RAG</li>
+                <li>PostgreSQL, MongoDB, Redis</li>
+                <li>Datadog, ELK, Sentry</li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <h2>קוד פתוח</h2>
+            <ul>
+                <li>מחבר <a href="https://pypi.org/project/dbr-logs/" target="_blank" style="color:#0097a7">dbr-logs</a></li>
+                <li>תורם ל-MLflow, keel ועוד</li>
+                <li>בעבר: Core maintainer ב-Open Knesset</li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+        <div class="section">
+            <h2>ניסיון תעסוקתי</h2>
+
+            <div class="job">
+                <div class="job-info">
+                    <h3>תפקידים שונים, כיום Principal Engineer</h3>
+                    <div class="company">Zencity</div>
+                </div>
+                <div class="job-meta">
+                    <div class="dates">2017 - היום</div>
+                </div>
+                <div class="job-desc">
+                    <ul>
+                        <li>הובלה טכנית בפרויקטים חוצי צוותים, הנחיית החלטות ארכיטקטוניות ומנטורינג למהנדסים</li>
+                        <li>בניית פלטפורמת נתונים: Databricks, PySpark, Delta Lake, CDC pipelines עם Kafka ו-Debezium</li>
+                        <li>הנדסת AI: סוכנים מבוססי LLM, context engineering, ו-RAG pipelines לסביבות Production</li>
+                        <li>עיצוב ה-SDLC של הדור הבא: שילוב כלי AI בתהליכי הפיתוח, כתיבת skills מותאמים</li>
+                        <li>MLOps: העברת מודלים מ-Notebook לפרודקשן, MLflow, תשתיות model serving</li>
+                        <li>DevOps: CI/CD (GitLab, GitHub Actions), Terraform, Kubernetes, ניטור מתקדם עם Datadog</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TODO: Add previous tech roles here -->
+            <!--
+            <div class="job">
+                <div class="job-info">
+                    <h3>ROLE</h3>
+                    <div class="company">COMPANY</div>
+                </div>
+                <div class="job-meta">
+                    <div class="dates">YYYY - YYYY</div>
+                </div>
+                <div class="job-desc">
+                    <ul>
+                        <li>...</li>
+                    </ul>
+                </div>
+            </div>
+            -->
+
+            <div class="job">
+                <div class="job-info">
+                    <h3>CFO משותף</h3>
+                    <div class="company">הנוער העובד והלומד</div>
+                </div>
+                <div class="job-meta">
+                    <div class="dates">2012 - 2013</div>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-info">
+                    <h3>CFO</h3>
+                    <div class="company">עמותת ניר חינוכי שיתופי</div>
+                </div>
+                <div class="job-meta">
+                    <div class="dates">2005 - 2012</div>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-info">
+                    <h3>רכז חינוך בלתי פורמלי | מנהל IT</h3>
+                    <div class="company">דרור ישראל</div>
+                </div>
+                <div class="job-meta">
+                    <div class="dates">2001 - 2012</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>הרצאות נבחרות</h2>
+            <ul class="talks-list">
+                <li><a href="https://www.youtube.com/watch?v=-CYprW6eAEE" target="_blank">לקחים הנדסיים מבניית מערכות מבוססות LLM</a> - HayaData 2025</li>
+                <li><a href="https://www.youtube.com/watch?v=_hmSt6GTrQ0" target="_blank">!It's Friday - CI/CD as an unfinished journey</a> - SREday London 2025</li>
+                <li><a href="https://www.youtube.com/watch?v=4yVmgSB16VA" target="_blank">איך להרוג ביצועי PySpark בטריקים פשוטים</a> - PyCon IL 2023</li>
+                <li><a href="https://youtu.be/F--DUGfIgYk" target="_blank">SigTERM - לכל דבר שמתחיל יש סוף</a> - Reversim Summit 2022</li>
+                <li><a href="https://conferences.oreilly.com/software-architecture/sa-eu-2019/public/schedule/detail/79486.html" target="_blank">SigTerm - Ignite talk</a> - O'Reilly Software Architecture Berlin 2019</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>כתיבה</h2>
+            <ul class="talks-list">
+                <li><a href="https://medium.com/@alonisser/" target="_blank">בלוג טכנולוגי ב-Medium</a></li>
+                <li>חבר ומרצה קבוע בקהילות Python ו-DevOps בישראל</li>
+            </ul>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
